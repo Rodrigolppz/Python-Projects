@@ -31,7 +31,7 @@ file_button.pack()
 # Create a label to display the selected directory
 
 selected_directory = tk.StringVar()
-directory_label = tk.Label(root, textvariable=selected_directory, font=('Helvetica',12), command=browse_file)
+directory_label = tk.Label(root, textvariable=selected_directory, font=('Helvetica',12))
 directory_label.pack(pady=10)
 
 # Create a button to browse for a directory
