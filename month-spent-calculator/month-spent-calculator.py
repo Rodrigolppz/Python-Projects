@@ -4,14 +4,31 @@
 # 4 - I need Python to print the result and tells me in which column i spent the most during the month.
 
 import csv
-import os 
+import os
+
+
 
 # Using os lib to define the path for my test.csv file
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(current_dir, 'test.csv')
 
-# opening the file 
+# opening and reading the file 
 
-with open(csv_path) as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+total = 0
+
+with open(csv_path, encoding='utf-8') as csvfile_reader:
+    reader = csv.DictReader(csvfile_reader)
+    for row in reader:
+        value = row['Ifood']
+        if not value:
+            continue
+        clean_value = value.replace('R$', '').replace(',','.')
+        total += float(clean_value)
+
+print(total)
+    
+
+
+
+
