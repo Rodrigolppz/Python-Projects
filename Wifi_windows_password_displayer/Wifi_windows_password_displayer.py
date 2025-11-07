@@ -61,5 +61,5 @@ class PwdDisplay:
     
 
 if __name__ == '__main__':
-    instance = PwdDisplay
-    instance()
+    instance = PwdDisplay()
+
