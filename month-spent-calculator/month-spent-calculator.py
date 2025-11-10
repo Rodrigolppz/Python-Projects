@@ -6,8 +6,6 @@
 import csv
 import os
 
-
-
 # Using os lib to define the path for my test.csv file
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -16,9 +14,15 @@ csv_path = os.path.join(current_dir, 'test.csv')
 # opening and reading the file 
 
 total = 0
+columns = ["Barbeiro", "Almoço", "Uber", "Médico", "Mercado", "Ifood", "Mãe", "Pai","Matt","Compras Online", "Compras Físicas", "Outros"]
+totals = {}
 
-with open(csv_path, encoding='utf-8') as csvfile_reader:
-    reader = csv.DictReader(csvfile_reader)
+def iterate_columns():
+    for item in columns:
+        totals[item] = total
+        
+        
+def cleaning_value():
     for row in reader:
         value = row['Ifood']
         if not value:
@@ -26,7 +30,20 @@ with open(csv_path, encoding='utf-8') as csvfile_reader:
         clean_value = value.replace('R$', '').replace(',','.')
         total += float(clean_value)
 
-print(total)
+
+
+with open(csv_path, encoding='utf-8') as csvfile_reader:
+    reader = csv.DictReader(csvfile_reader)
+    
+
+iterate_columns()
+print(totals)
+    
+
+        
+
+
+
     
 
 
